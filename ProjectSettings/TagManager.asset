@@ -9,6 +9,7 @@ TagManager:
   - TransparentFX
   - Ignore Raycast
   - Platform
+  - Ground
   - Water
   - UI
   - BG
