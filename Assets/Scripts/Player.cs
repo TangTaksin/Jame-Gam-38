@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     Rigidbody2D body;
-    Camera cam;
+    public Camera cam;
 
     bool inSmoke = false;
     bool enterSmoke;
@@ -48,7 +48,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        cam = Camera.main;
     }
     
     public void EnterSmoke(bool value)
