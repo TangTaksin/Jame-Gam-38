@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     bool enterSmoke;
     int smokeInt;
 
+    private Animator animator;
+
     [SerializeField] bool isMirrorSide;
     int mirrorInt;
 
@@ -49,6 +51,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
         LevelManager.OnPause += Pause;
     }
@@ -71,16 +74,27 @@ public class Player : MonoBehaviour
 
     void SmokeState()
     {
+        Debug.Log("Current Smoke Level: " + currentSmokeLevel);
+        Debug.Log("In Smoke: " + inSmoke);
+
         if (currentSmokeLevel >= smokeThreshold)
         {
             inSmoke = true;
             currentSmokeLevel = smokeThreshold;
+            Debug.Log("Setting IsConfused to true");
+            animator.SetBool("IsConfused", !inSmoke);
+            AudioManager.Instance.minTimeBetweenFootsteps = .1f;
+            AudioManager.Instance.maxTimeBetweenFootsteps = .1f;
         }
 
         if (currentSmokeLevel <= 0)
         {
             currentSmokeLevel = 0;
             inSmoke = false;
+            Debug.Log("Setting IsConfused to false");
+            animator.SetBool("IsConfused", inSmoke);
+            AudioManager.Instance.minTimeBetweenFootsteps = .3f;
+            AudioManager.Instance.maxTimeBetweenFootsteps = .42f;
         }
         else if (!enterSmoke)
             currentSmokeLevel -= smokeRemoveRate * Time.deltaTime;
@@ -116,7 +130,7 @@ public class Player : MonoBehaviour
 
         Jump();
 
-        if (inputX != 0 && isMirrorSide == true && isGround)
+        if (inputX != 0 && isMirrorSide != true && isGround)
         {
             AudioManager.Instance.PlayWalkSFX();
 
@@ -127,19 +141,72 @@ public class Player : MonoBehaviour
     void GetInput()
     {
         inputX = Input.GetAxisRaw("Horizontal");
-
     }
 
     void Movement()
     {
+        if (inSmoke && inputX != 0)
+        {
+            animator.SetBool("IsWalkingConfused", true);
+
+        }
+        else
+        {
+            animator.SetBool("IsWalkingConfused", false);
+        }
+
+        if (inSmoke && inputX == 0)
+        {
+            animator.SetBool("IsConfused", true);
+
+        }
+        else
+        {
+            animator.SetBool("IsConfused", false);
+        }
+
+        FlipScalePlayer();
+
+
         body.velocity = new Vector2((inputX * walkSpeed) * mirrorInt * smokeInt, body.velocity.y);
-        
+
+        if (inputX != 0 && isGround)
+        {
+            animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+        }
+    }
+
+    void FlipScalePlayer()
+    {
+        if (inputX < 0)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (inputX > 0)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+
+        if (inSmoke && inputX < 0)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (inSmoke && inputX > 0)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
+        }
 
     }
 
     void GroundCheck()
     {
         isGround = Physics2D.Raycast((Vector2)transform.position + groundCheckOffset, Vector2.down, groundCheckLenght, groundLayer);
+        animator.SetBool("Jumping", !isGround);
     }
 
     void Jump()
@@ -175,6 +242,7 @@ public class Player : MonoBehaviour
             var jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y * Mathf.Abs(body.gravityScale)));
 
             body.velocity = new Vector2(body.velocity.x, jumpForce);
+            animator.SetBool("Jumping", true);
             if (isMirrorSide == false)
             {
                 AudioManager.Instance.PlaySFX(AudioManager.Instance.jumpSfx);
@@ -222,6 +290,16 @@ public class Player : MonoBehaviour
 
             body.velocity = saveVelo;
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+
+        // Draw a line to represent the ground check length
+        Vector3 start = transform.position + new Vector3(groundCheckOffset.x, groundCheckOffset.y, 0);
+        Vector3 end = start + Vector3.down * groundCheckLenght;
+        Gizmos.DrawLine(start, end);
     }
 
 }

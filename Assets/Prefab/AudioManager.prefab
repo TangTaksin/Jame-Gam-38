@@ -58,8 +58,8 @@ MonoBehaviour:
   deathSfx: {fileID: 8300000, guid: c77ca2f577ccd2f4cbd71fc3e122b33e, type: 3}
   gameOverSfx: {fileID: 8300000, guid: ecfcbd7f999bd7f428bffc1a5f2acf63, type: 3}
   winSfx: {fileID: 0}
-  minTimeBetweenFootsteps: 0.25
-  maxTimeBetweenFootsteps: 0.93
+  minTimeBetweenFootsteps: 0.3
+  maxTimeBetweenFootsteps: 0.4
 --- !u!81 &2499350149752523958
 AudioListener:
   m_ObjectHideFlags: 0
