@@ -50,7 +50,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        cam = Camera.main;
         LevelManager.OnPause += Pause;
     }
 
