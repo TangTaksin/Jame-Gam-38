@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7c7ed7becf454d34797b8411ab62854a
+guid: 3aa2142349964bd469b1deae47b43470
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle-Sheet_0
+      name: move-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 062250c009acf2847afe2734ee0e3718
-      internalID: -670058171
+      spriteID: 7fbd61ce995a2c646905e22462ff6837
+      internalID: -703070998
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle-Sheet_1
+      name: move-Sheet_1
       rect:
         serializedVersion: 2
         x: 24
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 058254a33c7e215449c880e0f33fb1e0
-      internalID: 1481483768
+      spriteID: 6bf782fefda52fe4cb6ca81c23646322
+      internalID: -1636250449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle-Sheet_2
+      name: move-Sheet_2
       rect:
         serializedVersion: 2
         x: 48
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b65452e213b3e446be2187ebc44a206
-      internalID: 221487068
+      spriteID: 9f36656e4bad09541bd15ab49c0f8c16
+      internalID: 329308597
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle-Sheet_3
+      name: move-Sheet_3
       rect:
         serializedVersion: 2
         x: 72
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a3a3c3d14dbb1d4e8b1110dd02aa3a5
-      internalID: 690764737
+      spriteID: db886a2d4184557448992073874b2fd0
+      internalID: 2116852785
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle-Sheet_0: -670058171
-      Idle-Sheet_1: 1481483768
-      Idle-Sheet_2: 221487068
-      Idle-Sheet_3: 690764737
+      move-Sheet_0: -703070998
+      move-Sheet_1: -1636250449
+      move-Sheet_2: 329308597
+      move-Sheet_3: 2116852785
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

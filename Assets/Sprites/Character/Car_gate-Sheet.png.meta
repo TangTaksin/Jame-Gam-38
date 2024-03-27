@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7c7ed7becf454d34797b8411ab62854a
+guid: ab102b4e2b1c77142ac0d0db9fba93a1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle-Sheet_0
+      name: Car_gate-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 24
-        height: 24
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 062250c009acf2847afe2734ee0e3718
-      internalID: -670058171
+      spriteID: eadd66cdbbadebf488ef559712e0192a
+      internalID: 734148908
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle-Sheet_1
+      name: Car_gate-Sheet_1
       rect:
         serializedVersion: 2
-        x: 24
+        x: 64
         y: 0
-        width: 24
-        height: 24
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 058254a33c7e215449c880e0f33fb1e0
-      internalID: 1481483768
+      spriteID: 0e6784d8aed7ee64eb9f1cf7426756a8
+      internalID: -1786663768
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle-Sheet_2
+      name: Car_gate-Sheet_2
       rect:
         serializedVersion: 2
-        x: 48
+        x: 128
         y: 0
-        width: 24
-        height: 24
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b65452e213b3e446be2187ebc44a206
-      internalID: 221487068
+      spriteID: 642d7ddf485d95843a4f8fe62dfacbf1
+      internalID: -1463590145
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle-Sheet_3
+      name: Car_gate-Sheet_3
       rect:
         serializedVersion: 2
-        x: 72
+        x: 192
         y: 0
-        width: 24
-        height: 24
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +187,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a3a3c3d14dbb1d4e8b1110dd02aa3a5
-      internalID: 690764737
+      spriteID: 024bf1695d7f6c1499219f47d68bafc0
+      internalID: -1413121883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Car_gate-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ea306c86aa09554681245fc5cb8fd28
+      internalID: -339436420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Car_gate-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b08696f393466fe4a8b991b385d1b6a1
+      internalID: -1405565188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Car_gate-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f533690afda26184bb9b7ee7676ba28c
+      internalID: 2120471693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Car_gate-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7349ddffcdecff54caa4ec0a06e1853a
+      internalID: 452311611
       vertices: []
       indices: 
       edges: []
@@ -204,10 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle-Sheet_0: -670058171
-      Idle-Sheet_1: 1481483768
-      Idle-Sheet_2: 221487068
-      Idle-Sheet_3: 690764737
+      Car_gate-Sheet_0: 734148908
+      Car_gate-Sheet_1: -1786663768
+      Car_gate-Sheet_2: -1463590145
+      Car_gate-Sheet_3: -1413121883
+      Car_gate-Sheet_4: -339436420
+      Car_gate-Sheet_5: -1405565188
+      Car_gate-Sheet_6: 2120471693
+      Car_gate-Sheet_7: 452311611
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
