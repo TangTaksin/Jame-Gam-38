@@ -42,12 +42,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _Size_fog: 23
-    - _Strenght: 0.644
+    - _Strenght: 0.395
     - _speed: 0.3
-    - _speed_fog: 0.01
+    - _speed_fog: 0.02
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
-    - _Wind: {r: 0.5, g: 0.1, b: 0, a: 0}
+    - _Wind: {r: 0.12, g: 0.01, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1664179281794924888
 MonoBehaviour:

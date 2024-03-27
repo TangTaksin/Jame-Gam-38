@@ -74,17 +74,13 @@ public class Player : MonoBehaviour
 
     void SmokeState()
     {
-        Debug.Log("Current Smoke Level: " + currentSmokeLevel);
-        Debug.Log("In Smoke: " + inSmoke);
-
         if (currentSmokeLevel >= smokeThreshold)
         {
             inSmoke = true;
             currentSmokeLevel = smokeThreshold;
-            Debug.Log("Setting IsConfused to true");
-            animator.SetBool("IsConfused", !inSmoke);
+            animator.SetBool("IsConfused", !inSmoke && inputX == 0);
             AudioManager.Instance.minTimeBetweenFootsteps = .1f;
-            AudioManager.Instance.maxTimeBetweenFootsteps = .1f;
+            AudioManager.Instance.maxTimeBetweenFootsteps = .15f;
         }
 
         if (currentSmokeLevel <= 0)
@@ -121,22 +117,21 @@ public class Player : MonoBehaviour
         smokeInt = (inSmoke ? -1 : 1);
 
         SmokeState();
-
         GroundCheck();
-
         GetInput();
-
         Movement();
-
+        PlayWalkSFX();
         Jump();
+        
+    }
 
+    private void PlayWalkSFX()
+    {
         if (inputX != 0 && isMirrorSide != true && isGround)
         {
             AudioManager.Instance.PlayWalkSFX();
-
         }
     }
-
 
     void GetInput()
     {
@@ -207,6 +202,10 @@ public class Player : MonoBehaviour
     {
         isGround = Physics2D.Raycast((Vector2)transform.position + groundCheckOffset, Vector2.down, groundCheckLenght, groundLayer);
         animator.SetBool("Jumping", !isGround);
+        if (isGround && cTimer != coyoteTime)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.footstepSounds[1]);
+        }
     }
 
     void Jump()

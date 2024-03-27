@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1663425e0019dbb4d943070f387fcb72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicaSource: {fileID: 5465468814884800286}
+  musicSource: {fileID: 5465468814884800286}
   sfxSource: {fileID: 6517142107343521479}
   bgm: {fileID: 0}
   footstepSounds:
@@ -58,6 +58,7 @@ MonoBehaviour:
   deathSfx: {fileID: 8300000, guid: c77ca2f577ccd2f4cbd71fc3e122b33e, type: 3}
   gameOverSfx: {fileID: 8300000, guid: ecfcbd7f999bd7f428bffc1a5f2acf63, type: 3}
   winSfx: {fileID: 0}
+  truckEngineSFX: {fileID: 8300000, guid: 52194f7b69e231a47a48c8bd615a2a81, type: 3}
   minTimeBetweenFootsteps: 0.3
   maxTimeBetweenFootsteps: 0.4
 --- !u!81 &2499350149752523958

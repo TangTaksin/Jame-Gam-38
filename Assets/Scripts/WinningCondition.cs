@@ -21,6 +21,7 @@ public class WinningCondition : MonoBehaviour
 
         if (win)
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.truckEngineSFX);
             // Call Level Clear
             inGameMenu.CallGoal();
         }

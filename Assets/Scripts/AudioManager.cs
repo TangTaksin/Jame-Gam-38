@@ -1,25 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [Header("Audio Source")]
-    [SerializeField] private AudioSource musicaSource;
+    [Header("Audio Sources")]
+    [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
 
-    [Header("Audio Clip")]
-    public AudioClip bgm;
-    public AudioClip[] footstepSounds;
-    public AudioClip jumpSfx;
-    public AudioClip jumpSfx2;
-    public AudioClip deathSfx;
-    public AudioClip gameOverSfx;
-    public AudioClip winSfx;
+    [Header("Audio Clips")]
+    [SerializeField] public AudioClip bgm;
+    [SerializeField] public AudioClip[] footstepSounds;
+    [SerializeField] public AudioClip jumpSfx;
+    [SerializeField] public AudioClip jumpSfx2;
+    [SerializeField] public AudioClip deathSfx;
+    [SerializeField] public AudioClip gameOverSfx;
+    [SerializeField] public AudioClip winSfx;
+    public AudioClip truckEngineSFX;
+
+    [Header("Footstep Settings")]
+    [SerializeField] public float minTimeBetweenFootsteps = 0.3f;
+    [SerializeField] public float maxTimeBetweenFootsteps = 0.6f;
 
     private float timeSinceLastFootstep; // Time since the last footstep sound
-    public float minTimeBetweenFootsteps = 0.3f; // Minimum time between footstep sounds
-    public float maxTimeBetweenFootsteps = 0.6f; // Maximum time between footstep sounds
     private int walkStepCount = 0;
 
     public static AudioManager Instance { get; private set; }
@@ -36,16 +37,16 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
         PlayMusic(bgm);
     }
 
     public void PlayMusic(AudioClip clip)
     {
-        musicaSource.clip = clip;
-        musicaSource.Play();
+        musicSource.clip = clip;
+        musicSource.Play();
     }
 
     public void PlaySFX(AudioClip clip)
@@ -60,14 +61,8 @@ public class AudioManager : MonoBehaviour
         {
             AudioClip footstepSound = footstepSounds[walkStepCount];
             sfxSource.PlayOneShot(footstepSound);
-            walkStepCount++;
-            if (walkStepCount > footstepSounds.Length - 1)
-            {
-                walkStepCount = 0;
-
-            }
+            walkStepCount = (walkStepCount + 1) % footstepSounds.Length;
             timeSinceLastFootstep = Time.time; // Update the time since the last footstep sound
-
         }
     }
 }
