@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     [Header("Ground Check")]
     bool isGround;
     [SerializeField] LayerMask groundLayer;
-    [SerializeField] Vector2 groundCheckOffset = new Vector2(0,-.5f);
+    [SerializeField] Vector2 groundCheckOffset = new Vector2(0, -.5f);
     [SerializeField] float groundCheckLenght = .2f;
 
     [Header("Movement")]
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
     }
-    
+
     public void EnterSmoke(bool value)
     {
         enterSmoke = value;
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
     void SmokeState()
     {
         if (currentSmokeLevel >= smokeThreshold)
-        { 
+        {
             inSmoke = true;
             currentSmokeLevel = smokeThreshold;
         }
@@ -101,8 +101,14 @@ public class Player : MonoBehaviour
         GetInput();
 
         Movement();
-        
+
         Jump();
+
+        if (inputX != 0 && isMirrorSide == true && isGround)
+        {
+            AudioManager.Instance.PlayWalkSFX();
+
+        }
     }
 
     void GetInput()
@@ -114,6 +120,8 @@ public class Player : MonoBehaviour
     void Movement()
     {
         body.velocity = new Vector2((inputX * walkSpeed) * mirrorInt * smokeInt, body.velocity.y);
+        
+
     }
 
     void GroundCheck()
@@ -153,6 +161,17 @@ public class Player : MonoBehaviour
             var jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y * Mathf.Abs(body.gravityScale)));
 
             body.velocity = new Vector2(body.velocity.x, jumpForce);
+            if (isMirrorSide == false)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.jumpSfx);
+
+            }
+            else
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.jumpSfx2);
+
+            }
+
 
 
             bTimer = 0f;
