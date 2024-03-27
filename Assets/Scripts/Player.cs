@@ -43,12 +43,22 @@ public class Player : MonoBehaviour
     [SerializeField] Image ConfuseImageFill;
     [SerializeField] Vector2 uiOffset;
 
+    public delegate void DieEvent();
+    public static DieEvent OnDie;
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        cam = Camera.main;
+        LevelManager.OnPause += Pause;
     }
+
+    private void OnDestroy()
+    {
+        LevelManager.OnPause -= Pause;
+    }
+
 
     public void EnterSmoke(bool value)
     {
@@ -91,6 +101,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isPause)
+            return;
+
         mirrorInt = (isMirrorSide ? -1 : 1);
         smokeInt = (inSmoke ? -1 : 1);
 
@@ -110,6 +123,7 @@ public class Player : MonoBehaviour
 
         }
     }
+
 
     void GetInput()
     {
@@ -151,6 +165,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonUp("Jump") && body.velocity.y > 0)
         {
+            body.velocity = new Vector2(body.velocity.x, body.velocity.y / 2);
             cTimer = 0f;
         }
 
@@ -175,6 +190,38 @@ public class Player : MonoBehaviour
 
 
             bTimer = 0f;
+        }
+    }
+
+
+    public void Die()
+    {
+        //play animation
+
+
+        OnDie?.Invoke();
+    }
+
+
+    Vector2 saveVelo;
+    bool isPause = false;
+
+    void Pause()
+    {
+        isPause = !isPause;
+
+        if (isPause)
+        {
+            body.isKinematic = true;
+
+            saveVelo = body.velocity;
+            body.velocity = Vector2.zero;
+        }
+        else
+        {
+            body.isKinematic = false;
+
+            body.velocity = saveVelo;
         }
     }
 
