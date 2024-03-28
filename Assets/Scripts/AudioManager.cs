@@ -54,6 +54,11 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(clip);
     }
 
+    public void StopAllSFX()
+    {
+        sfxSource.Stop();
+    }
+
     public void PlayWalkSFX()
     {
         // Check if enough time has passed to play the next footstep sound

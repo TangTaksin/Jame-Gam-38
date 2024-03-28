@@ -54,11 +54,13 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
         LevelManager.OnPause += Pause;
+        LevelManager.OnUnPause += UnPause;
     }
 
     private void OnDestroy()
     {
         LevelManager.OnPause -= Pause;
+        LevelManager.OnUnPause -= UnPause;
     }
 
 
@@ -122,7 +124,7 @@ public class Player : MonoBehaviour
         Movement();
         PlayWalkSFX();
         Jump();
-        
+
     }
 
     private void PlayWalkSFX()
@@ -274,21 +276,17 @@ public class Player : MonoBehaviour
 
     void Pause()
     {
-        isPause = !isPause;
+        isPause = true;
+        body.isKinematic = true;
+        saveVelo = body.velocity;
+        body.velocity = Vector2.zero;
+    }
 
-        if (isPause)
-        {
-            body.isKinematic = true;
-
-            saveVelo = body.velocity;
-            body.velocity = Vector2.zero;
-        }
-        else
-        {
-            body.isKinematic = false;
-
-            body.velocity = saveVelo;
-        }
+    void UnPause()
+    {
+        isPause = false;
+        body.isKinematic = false;
+        body.velocity = saveVelo;
     }
 
     void OnDrawGizmosSelected()

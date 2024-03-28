@@ -37,7 +37,7 @@ public class InGameMenu : MonoBehaviour
     public void UnPause()
     {
         pauseAnim.Play("LevelClear_Out");
-        LevelManager.CallPause();
+        LevelManager.CallUnPause();
         currentPanel = panel.none;
     }
 
