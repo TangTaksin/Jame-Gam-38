@@ -48,6 +48,9 @@ public class Player : MonoBehaviour
     public delegate void DieEvent();
     public static DieEvent OnDie;
 
+    public ParticleSystem playerDieParticle;
+    public SpriteRenderer playerSprite;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,12 +58,14 @@ public class Player : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         LevelManager.OnPause += Pause;
         LevelManager.OnUnPause += UnPause;
+        Player.OnDie += PlayerBurn;
     }
 
     private void OnDestroy()
     {
         LevelManager.OnPause -= Pause;
         LevelManager.OnUnPause -= UnPause;
+        Player.OnDie -= PlayerBurn;
     }
 
 
@@ -265,9 +270,25 @@ public class Player : MonoBehaviour
     public void Die()
     {
         //play animation
-
+        playerDieParticle.Play();
+        playerSprite.enabled = false;
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.deathSfx);
 
         OnDie?.Invoke();
+    }
+
+    public void PlayerBurn()
+    {
+        playerDieParticle.Play();
+        playerSprite.enabled = false;
+    }
+
+    public void FallDie()
+    {
+
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.gameOverSfx);
+        OnDie?.Invoke();
+        body.isKinematic = false;
     }
 
 

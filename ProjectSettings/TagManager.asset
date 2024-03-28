@@ -3,20 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - DeadZone
+  - Fire
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
   - Platform
-  - Ground
   - Water
+  - UI
   - UI
   - BG
   - Player
   - P1 Cam
   - P2 Cam
-  - 
   - 
   - 
   - 
