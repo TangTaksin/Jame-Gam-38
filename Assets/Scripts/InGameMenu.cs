@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InGameMenu : MonoBehaviour
 {
+    LevelManager lm;
+
     enum panel {none, paused, goal, fail }
     panel currentPanel;
 
@@ -17,6 +19,11 @@ public class InGameMenu : MonoBehaviour
 
     private void Start()
     {
+        if (lm == null)
+        {
+            lm = FindAnyObjectByType<LevelManager>();
+        }
+
         Player.OnDie += CallFail;
         pauseAnim = PausePanel.GetComponent<Animator>();
     }
@@ -64,6 +71,22 @@ public class InGameMenu : MonoBehaviour
                 CallPause();
             else if (currentPanel == panel.paused)
                 UnPause();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (currentPanel == panel.fail || currentPanel == panel.paused || currentPanel == panel.goal)
+            {
+                LevelManager.ReplayLevel();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (currentPanel == panel.goal)
+            {
+                lm.LoadNextLevel();
+            }
         }
     }
 }
