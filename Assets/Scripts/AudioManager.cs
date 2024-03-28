@@ -13,8 +13,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public AudioClip jumpSfx2;
     [SerializeField] public AudioClip deathSfx;
     [SerializeField] public AudioClip gameOverSfx;
-    [SerializeField] public AudioClip winSfx;
-    public AudioClip truckEngineSFX;
+    [SerializeField] public AudioClip truckEngineSFX;
 
     [Header("Footstep Settings")]
     [SerializeField] public float minTimeBetweenFootsteps = 0.3f;

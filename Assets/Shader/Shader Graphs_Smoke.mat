@@ -42,7 +42,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Size_fog: 23
-    - _Strenght: 0.395
+    - _Strenght: 0.717
     - _speed: 0.3
     - _speed_fog: 0.02
     m_Colors:
